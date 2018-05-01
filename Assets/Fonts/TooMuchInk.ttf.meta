@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a2b7f4fea9c3a4d808d51ed31e77d39a
+timeCreated: 1525135160
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: TooMuchInk
+  fontNames:
+  - TooMuchInk
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
