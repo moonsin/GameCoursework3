@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - BeginingStory
+  - Talk
+  - Outside
+  - Looproom
   layers:
   - Default
   - TransparentFX
@@ -43,6 +47,9 @@ TagManager:
     locked: 0
   - name: background
     uniqueID: 1316502063
+    locked: 0
+  - name: stuff
+    uniqueID: 2956447137
     locked: 0
   - name: PlayerLayer
     uniqueID: 690044385

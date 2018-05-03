@@ -1,0 +1,10 @@
+[title=looproom1]
+Damn, nobody here. It seems like no way out here. 
+I should try to look around and find a phone.
+[title=looproom1_end]
+
+[title=looproom2]
+WHAT THE ****!?
+Why does the only door come in makes me arrive another room?
+Wait...the room is same as the room before...
+[title=looproom2_end]
