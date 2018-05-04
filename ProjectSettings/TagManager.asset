@@ -8,6 +8,11 @@ TagManager:
   - Talk
   - Outside
   - Looproom
+  - CurrentRoom
+  - HouseRoom
+  - DoorL
+  - DoorR
+  - DoorU
   layers:
   - Default
   - TransparentFX

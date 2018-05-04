@@ -27,8 +27,9 @@ public class GameManager : MonoBehaviour {
 
 	void Awake(){
 		init ();
-		startStoryScript.showBeginingStory ();
+		//startStoryScript.showBeginingStory ();
 		//OutSideStart();
+		showHouseRoom();
 
 	}
 
@@ -82,6 +83,18 @@ public class GameManager : MonoBehaviour {
 
 	public void LoopRoom3Start(){
 		Looproom3Instance = Instantiate (Looproom3) as GameObject;
+		myplayer.gameObject.GetComponent<SpriteRenderer> ().enabled = true;
+		myplayer.busy = false;
+	}
+
+	public void showHouseRoom(){
+		//测试代码
+		Instantiate (player);
+		inOutside = true;
+		this.myplayer.busy = true;
+		///
+
+		HouseroomManager.instance.HouseRoomStart ();
 		myplayer.gameObject.GetComponent<SpriteRenderer> ().enabled = true;
 		myplayer.busy = false;
 	}
