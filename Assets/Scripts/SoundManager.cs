@@ -8,6 +8,8 @@ public class SoundManager : MonoBehaviour {
 	public AudioSource door_creak_closing;
 	public AudioSource shaonvdexiao1;
 	public AudioSource open_door_3;
+	public AudioSource openWindow;
+	public AudioSource openMap;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +24,8 @@ public class SoundManager : MonoBehaviour {
 		door_creak_closing = GameObject.Find ("Door_creak_closing").GetComponent<AudioSource> ();
 		shaonvdexiao1 = GameObject.Find ("shaonvdexiao1").GetComponent<AudioSource> ();
 		open_door_3 = GameObject.Find ("open_door_3").GetComponent<AudioSource> ();
+		openWindow = GameObject.Find ("openWindow").GetComponent<AudioSource> ();
+		openMap= GameObject.Find ("openMap").GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame

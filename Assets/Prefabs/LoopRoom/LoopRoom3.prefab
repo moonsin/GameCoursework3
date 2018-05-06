@@ -70,11 +70,11 @@ GameObject:
   - component: {fileID: 4396781359118638}
   - component: {fileID: 212326083412730690}
   - component: {fileID: 61488328670129770}
-  - component: {fileID: 114118574367076924}
   - component: {fileID: 61256798398335564}
+  - component: {fileID: 114118574367076924}
   m_Layer: 0
   m_Name: DoorL
-  m_TagString: Untagged
+  m_TagString: DoorL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

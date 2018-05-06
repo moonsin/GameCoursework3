@@ -24,12 +24,14 @@ public class GameManager : MonoBehaviour {
 	public GameObject Looproom3;
 	public GameObject Looproom3Instance;
 
+	public bool inHouseRoom = false;
 
-	void Awake(){
+
+	void Start(){
 		init ();
-		//startStoryScript.showBeginingStory ();
+		startStoryScript.showBeginingStory ();
 		//OutSideStart();
-		showHouseRoom();
+		//showHouseRoom();
 
 	}
 
@@ -89,19 +91,20 @@ public class GameManager : MonoBehaviour {
 
 	public void showHouseRoom(){
 		//测试代码
-		Instantiate (player);
-		inOutside = true;
-		this.myplayer.busy = true;
-		///
+		//Instantiate (player);
+		//this.myplayer.busy = true;
+		//GameManager.instance.myplayer.transform.position = new Vector3 (12f, -2.3f);
+		//
+
+		GetComponent<IndicatorText> ().initRoomInMap ();
+
+		inHouseRoom = true;
 
 		HouseroomManager.instance.HouseRoomStart ();
 		myplayer.gameObject.GetComponent<SpriteRenderer> ().enabled = true;
 		myplayer.busy = false;
 	}
 
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
