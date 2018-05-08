@@ -11,6 +11,7 @@ public class HouseRoomDoor : MonoBehaviour {
 	public GameObject CurrentRoom;
 	string ConnectedDoorTag;
 	public bool changingRoom = false;
+	public bool lockSoundShowed = false;
 
 	// Use this for initialization
 	void Start () {
@@ -120,7 +121,6 @@ public class HouseRoomDoor : MonoBehaviour {
 			NearRoom = HouseroomManager.instance.checkNearRoom (this.tag);
 			//TODO
 			if (NearRoom != null) {
-				print (NearRoom.name);
 				ConnectedDoorTag = checkConnected ();
 				if (ConnectedDoorTag == null) {
 					locked = true;
@@ -130,6 +130,10 @@ public class HouseRoomDoor : MonoBehaviour {
 			}
 
 			if (locked) {
+				if (!lockSoundShowed) {
+					lockSoundShowed = true;
+					SoundManager.instance.door_lock_1.Play ();
+				}
 				GameManager.instance.GetComponent<IndicatorText> ().showIndicator ("The door is locked");
 			} else {
 				GameManager.instance.GetComponent<IndicatorText> ().showIndicator ("Press F to open the door");
@@ -139,6 +143,7 @@ public class HouseRoomDoor : MonoBehaviour {
 
 	protected void OnTriggerExit2D( Collider2D other){
 		nearDoor = false;
+		lockSoundShowed = false;
 		GameManager.instance.GetComponent<IndicatorText> ().hideIndicator ();
 	}
 
@@ -152,6 +157,7 @@ public class HouseRoomDoor : MonoBehaviour {
 					GameManager.instance.myplayer.transform.position = new Vector3 (-16f, -3f);
 				}
 			}
+
 		}else if (newRoomDoor == "DoorL") {
 			if(Roomtype == 0){
 				GameManager.instance.myplayer.transform.position = new Vector3 (-17f, -3f);
@@ -173,6 +179,27 @@ public class HouseRoomDoor : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!changingRoom) {
+
+			int NewRoomrelatedPosition = new int ();
+
+			//RoomDirection : 0:水平向右 1:水平向左 2:垂直向上 3 垂直向下
+			if ((CurrentRoom.GetComponent<HouseRoom> ().direction == 0 && this.tag == "DoorR") ||
+				(CurrentRoom.GetComponent<HouseRoom> ().direction == 1 && this.tag == "DoorL") ||
+				(CurrentRoom.GetComponent<HouseRoom> ().direction == 3 && this.tag == "DoorU")) {
+				NewRoomrelatedPosition = 2;
+			} else if ((CurrentRoom.GetComponent<HouseRoom> ().direction == 0 && this.tag == "DoorL") ||
+				(CurrentRoom.GetComponent<HouseRoom> ().direction == 1 && this.tag == "DoorR") ||
+				(CurrentRoom.GetComponent<HouseRoom> ().direction == 2 && this.tag == "DoorU")) {
+				NewRoomrelatedPosition = 1;
+			} else if ((CurrentRoom.GetComponent<HouseRoom> ().direction == 0 && this.tag == "DoorU") ||
+				(CurrentRoom.GetComponent<HouseRoom> ().direction == 2 && this.tag == "DoorR") ||
+				(CurrentRoom.GetComponent<HouseRoom> ().direction == 3 && this.tag == "DoorL")) {
+				NewRoomrelatedPosition = 4;
+			} else if ((CurrentRoom.GetComponent<HouseRoom> ().direction == 1 && this.tag == "DoorU") ||
+				(CurrentRoom.GetComponent<HouseRoom> ().direction == 2 && this.tag == "DoorL") ||
+				(CurrentRoom.GetComponent<HouseRoom> ().direction == 3 && this.tag == "DoorR")) {
+				NewRoomrelatedPosition = 3;
+			}
 			
 			if (Input.GetKeyDown ("f") && nearDoor && NearRoom == null && !locked) {
 
@@ -187,26 +214,7 @@ public class HouseRoomDoor : MonoBehaviour {
 				//TODO
 
 				GameObject newRoom = HouseroomManager.instance.RoomRandomList [Random.Range (0, HouseroomManager.instance.RoomRandomList.Length)];
-				int NewRoomrelatedPosition = new int ();
 
-				//RoomDirection : 0:水平向右 1:水平向左 2:垂直向上 3 垂直向下
-				if ((CurrentRoom.GetComponent<HouseRoom> ().direction == 0 && this.tag == "DoorR") ||
-				   (CurrentRoom.GetComponent<HouseRoom> ().direction == 1 && this.tag == "DoorL") ||
-				   (CurrentRoom.GetComponent<HouseRoom> ().direction == 3 && this.tag == "DoorU")) {
-					NewRoomrelatedPosition = 2;
-				} else if ((CurrentRoom.GetComponent<HouseRoom> ().direction == 0 && this.tag == "DoorL") ||
-				 (CurrentRoom.GetComponent<HouseRoom> ().direction == 1 && this.tag == "DoorR") ||
-				 (CurrentRoom.GetComponent<HouseRoom> ().direction == 2 && this.tag == "DoorU")) {
-					NewRoomrelatedPosition = 1;
-				} else if ((CurrentRoom.GetComponent<HouseRoom> ().direction == 0 && this.tag == "DoorU") ||
-				          (CurrentRoom.GetComponent<HouseRoom> ().direction == 2 && this.tag == "DoorR") ||
-				          (CurrentRoom.GetComponent<HouseRoom> ().direction == 3 && this.tag == "DoorL")) {
-					NewRoomrelatedPosition = 4;
-				} else if ((CurrentRoom.GetComponent<HouseRoom> ().direction == 1 && this.tag == "DoorU") ||
-				         (CurrentRoom.GetComponent<HouseRoom> ().direction == 2 && this.tag == "DoorL") ||
-				         (CurrentRoom.GetComponent<HouseRoom> ().direction == 3 && this.tag == "DoorR")) {
-					NewRoomrelatedPosition = 3;
-				}
 
 				if (this.tag == "DoorR" || this.tag == "DoorL") {
 					newRoom.GetComponent<HouseRoom> ().direction = CurrentRoom.GetComponent<HouseRoom> ().direction;
@@ -237,13 +245,18 @@ public class HouseRoomDoor : MonoBehaviour {
 				CurrentRoom = GameObject.FindGameObjectWithTag ("CurrentRoom");
 				nearDoor = false;
 
+
 				///test
 				initPlayerPosition (ConnectedDoorTag,NearRoom.GetComponent<HouseRoom>().Roomtype);
 
 				CurrentRoom.tag = "HouseRoom";
 				NearRoom.tag = "CurrentRoom";
+
 				CurrentRoom.SetActive (false);
 				NearRoom.SetActive (true);
+
+				GameManager.instance.GetComponent<IndicatorText> ().connectedToRoomInMap (NearRoom.GetComponent<HouseRoom> ().roomIndex, CurrentRoom.GetComponent<HouseRoom> ().roomIndex, NewRoomrelatedPosition,NearRoom.GetComponent<HouseRoom>());
+
 				changingRoom = false;
 			}
 		}

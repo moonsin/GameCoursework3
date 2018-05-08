@@ -62,8 +62,6 @@ public class HouseroomManager : MonoBehaviour {
 		CurrentRoom.SetActive (false);
 
 
-		print (newRoomRalativePosition);
-
 		if (newRoomRalativePosition == 1) {
 
 			newroom.RoomPosition [0] = CurrentRoom.GetComponent<HouseRoom> ().RoomPosition [0] - 1;
@@ -101,7 +99,7 @@ public class HouseroomManager : MonoBehaviour {
 		newroom.tag = "CurrentRoom";
 
 
-		GameManager.instance.GetComponent<IndicatorText> ().addNewRoomInMap (newroom, newRoomRalativePosition);
+		GameManager.instance.GetComponent<IndicatorText> ().addNewRoomInMap (newroom.roomIndex, CurrentRoom.GetComponent<HouseRoom> ().roomIndex,newroom, newRoomRalativePosition);
 
 	}
 

@@ -29,9 +29,9 @@ public class GameManager : MonoBehaviour {
 
 	void Start(){
 		init ();
-		startStoryScript.showBeginingStory ();
+		//startStoryScript.showBeginingStory ();
 		//OutSideStart();
-		//showHouseRoom();
+		showHouseRoom();
 
 	}
 
@@ -91,9 +91,9 @@ public class GameManager : MonoBehaviour {
 
 	public void showHouseRoom(){
 		//测试代码
-		//Instantiate (player);
-		//this.myplayer.busy = true;
-		//GameManager.instance.myplayer.transform.position = new Vector3 (12f, -2.3f);
+		Instantiate (player);
+		this.myplayer.busy = true;
+		GameManager.instance.myplayer.transform.position = new Vector3 (-19f, -2f);
 		//
 
 		GetComponent<IndicatorText> ().initRoomInMap ();

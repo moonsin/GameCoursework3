@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class photo3 : photos {
 	private bool laughed = false;
+	public LooproomDoor3 LooproomDoor3;
 	// Use this for initialization
 	void Start () {
 		
 	}
 		
 	void unlockDoor(){
-		GameObject.Find ("DoorL").GetComponent<LooproomDoor3> ().locked = false;
+		LooproomDoor3.locked = false;
 		SoundManager.instance.open_door_3.Play ();
 	}
 
