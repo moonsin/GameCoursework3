@@ -14,6 +14,7 @@ TagManager:
   - DoorR
   - DoorU
   - MapObject
+  - Ghost
   layers:
   - Default
   - TransparentFX

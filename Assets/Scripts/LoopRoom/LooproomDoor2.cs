@@ -21,7 +21,7 @@ public class LooproomDoor2 : commonDoor {
 			Destroy (GameManager.instance.Looproom2Instance);
 
 			GameManager.instance.myplayer.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
-			GameManager.instance.myplayer.transform.position = new Vector3 (-16f, -3f);
+			GameManager.instance.myplayer.transform.position =  new Vector3 (-18f, -1.5f);
 			SoundManager.instance.door_creak_closing.Play ();
 			GameManager.instance.showLoopRoom3 ();
 

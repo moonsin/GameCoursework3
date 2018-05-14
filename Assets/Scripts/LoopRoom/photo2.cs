@@ -14,6 +14,7 @@ public class photo2 : photos {
 	void Update () {
 
 		if (Input.GetKeyDown ("f") && nearPhoto) {
+			GameManager.instance.myplayer.playerRigidbody.velocity = new Vector2 (0f, 0f);
 			GameManager.instance.myplayer.busy = true;
 			GameManager.instance.GetComponent<IndicatorText> ().showIndicatorImage("PhotoP2");
 		}

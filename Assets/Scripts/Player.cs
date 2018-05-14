@@ -22,10 +22,18 @@ public class Player : MonoBehaviour {
 	public float yForce;
 
 	public bool busy = false;
+	public bool walking = false;
+
+	public Animator animator; 
+
+	public int SAN = 100;
+	public bool hasKey = false;
 
 	void Awake(){
 		playerRigidbody = GetComponent<Rigidbody2D> ();
 		GameManager.instance.myplayer = this;
+		animator = GetComponent<Animator>();
+		hasKey = false;
 	}
 	// Use this for initialization
 	void Start () {
@@ -73,6 +81,25 @@ public class Player : MonoBehaviour {
 			MovementX ();
 			MovementY ();
 		}
+
+		if (SAN <= 0) {
+			busy = true;
+			GameManager.instance.GetComponent<IndicatorText> ().showBdText ();
+		}
+
+		if ((Input.GetAxis (HORIZONTAL) != 0 || Input.GetAxis (VERTICAL) != 0)) {
+			animator.ResetTrigger("walkFinish");
+			animator.SetTrigger ("walk");
+		} 
+
+		if (Input.GetAxis (HORIZONTAL)== 0 && Input.GetAxis (VERTICAL) == 0) {
+			animator.ResetTrigger("walk");
+			animator.SetTrigger ("walkFinish");
+
+		}
+
+
+
 
 		if (playerRigidbody.velocity.x > 1) {
 			this.transform.rotation = Quaternion.Euler (0, 0, 0);

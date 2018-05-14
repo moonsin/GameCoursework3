@@ -1,10 +1,34 @@
 [title=looproom1]
-Damn, nobody here. It seems like no way out here. 
+Damn, nobody here.
 I should try to look around and find a phone.
 [title=looproom1_end]
 
 [title=looproom2]
-WHAT THE ****!?
-Why does the only door come in makes me arrive another room?
-Wait...the room is same as the room before...
+WHAT ？？the room is same as the last room?
 [title=looproom2_end]
+
+[title=key1found]
+Stop joking...
+This is the same address with my university!
+wait,wait...My mom did tell me there was a high school before.
+But that should be 50 years ago.
+That's too weird.
+[title=key1found_end]
+
+[title=key2found]
+Oh, that's a diary of a poor girl.
+Where is she? Is she fine now?
+[title=key2found_end]
+
+[title=key3found]
+That's must be hers. Oh, poor girl.
+If this is that high school, why did this school disappear?
+[title=key3found_end]
+
+[title=key4found]
+Oh my god!
+That's so crazy! I must find the key and run away.
+Now, I can recall how my mother told me.
+This school was burned 50 years ago. All people died because nobody can open the emergency exit.
+Oh my god. I have to go. 
+[title=key4found_end]

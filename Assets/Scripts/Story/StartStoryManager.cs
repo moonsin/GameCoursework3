@@ -11,11 +11,20 @@ public class StartStoryManager : StartStory {
 		story = GameObject.Find("Story").GetComponent<Text>();
 		skipText = GameObject.Find("skipText").GetComponent<Text>();
 		BeginingAudio = GameObject.Find ("background").GetComponent<AudioSource> ();
+		warning = GameObject.Find ("warning");
+
 		legend.enabled = false;
 		story.enabled = false;
 		skipText.enabled = false;
 
 		legend.color = new Color (255, 0, 0, transparency);
+
+		Invoke ("showLegend", 12f);
+
+	}
+
+	void showLegend(){
+		warning.SetActive (false);
 		legend.enabled = true;
 		Showstory = true;
 		BeginingAudio.Play ();

@@ -11,6 +11,10 @@ public class SoundManager : MonoBehaviour {
 	public AudioSource openWindow;
 	public AudioSource openMap;
 	public AudioSource door_lock_1;
+	public AudioSource shaonvdexiao2;
+	public AudioSource nextPage;
+	public AudioSource nico;
+	public AudioSource blood;
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +32,10 @@ public class SoundManager : MonoBehaviour {
 		openWindow = GameObject.Find ("openWindow").GetComponent<AudioSource> ();
 		openMap= GameObject.Find ("openMap").GetComponent<AudioSource> ();
 		door_lock_1 = GameObject.Find ("door_lock_1").GetComponent<AudioSource> ();
-
+		shaonvdexiao2 = GameObject.Find ("shaonvdexiao2").GetComponent<AudioSource> ();
+		nextPage = GameObject.Find ("nextPage").GetComponent<AudioSource> ();
+		nico = GameObject.Find ("nico").GetComponent<AudioSource> ();
+		blood = GameObject.Find ("blood").GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame

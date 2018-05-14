@@ -24,8 +24,8 @@ public class outsideCamera : MonoBehaviour {
 		} else if (GameManager.instance.inLoopRoom == true) {
 			if (GameManager.instance.myplayer.transform.position.x < -13) {
 				this.transform.position = new Vector3 (-13f, 0f, -10f);
-			}else if (GameManager.instance.myplayer.transform.position.x > -9.8) {
-				this.transform.position = new Vector3 (-9.8f, 0f, -10f);
+			}else if (GameManager.instance.myplayer.transform.position.x > -3) {
+				this.transform.position = new Vector3 (-3f, 0f, -10f);
 			}else {
 				this.transform.position = new Vector3 (GameManager.instance.myplayer.transform.position.x, 0f, -10f);
 			}
@@ -36,8 +36,8 @@ public class outsideCamera : MonoBehaviour {
 			if (GameObject.FindGameObjectWithTag ("CurrentRoom").GetComponent<HouseRoom> ().Roomtype == 0) {
 				if (GameManager.instance.myplayer.transform.position.x < -13) {
 					this.transform.position = new Vector3 (-13f, 0f, -10f);
-				} else if (GameManager.instance.myplayer.transform.position.x > -9.8) {
-					this.transform.position = new Vector3 (-9.8f, 0f, -10f);
+				} else if (GameManager.instance.myplayer.transform.position.x > -3) {
+					this.transform.position = new Vector3 (-3f, 0f, -10f);
 				} else {
 					this.transform.position = new Vector3 (GameManager.instance.myplayer.transform.position.x, 0f, -10f);
 				}
@@ -46,8 +46,8 @@ public class outsideCamera : MonoBehaviour {
 			if (GameObject.FindGameObjectWithTag ("CurrentRoom").GetComponent<HouseRoom> ().Roomtype == 1) {
 				if (GameManager.instance.myplayer.transform.position.x < -13) {
 					this.transform.position = new Vector3 (-13f, 0f, -10f);
-				} else if (GameManager.instance.myplayer.transform.position.x > 6) {
-					this.transform.position = new Vector3 (6f, 0f, -10f);
+				} else if (GameManager.instance.myplayer.transform.position.x > 11) {
+					this.transform.position = new Vector3 (11f, 0f, -10f);
 				} else {
 					this.transform.position = new Vector3 (GameManager.instance.myplayer.transform.position.x, 0f, -10f);
 				}

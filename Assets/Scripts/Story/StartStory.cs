@@ -11,6 +11,7 @@ public class StartStory : MonoBehaviour {
 	protected Text skipText;
 	protected bool Showstory = false;
 	protected float transparency = 0f;
+	protected GameObject warning;
 	protected  AudioSource BeginingAudio;
 
 	// Use this for initialization

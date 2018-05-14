@@ -12,10 +12,14 @@ public class HouseRoomDoor : MonoBehaviour {
 	string ConnectedDoorTag;
 	public bool changingRoom = false;
 	public bool lockSoundShowed = false;
+	public bool isNearRoom = false;
+	public bool showTutorial3 = false;
 
 	// Use this for initialization
 	void Start () {
 		CurrentRoom = GameObject.FindGameObjectWithTag ("CurrentRoom");
+		HouseroomManager.instance.addDoorTolist (this);
+
 	}
 
 	//return doorTag
@@ -31,8 +35,21 @@ public class HouseRoomDoor : MonoBehaviour {
 					return "DoorL";
 				} 
 			} else {
-				if (NearRoom.GetComponent<HouseRoom> ().HasTopDoor == 1) {
-					return "DoorU";
+
+				if ((CurrentRoom.GetComponent<HouseRoom> ().direction == 0 && NearRoom.GetComponent<HouseRoom> ().direction == 1) ||
+				    (CurrentRoom.GetComponent<HouseRoom> ().direction == 1 && NearRoom.GetComponent<HouseRoom> ().direction == 0) ||
+				    (CurrentRoom.GetComponent<HouseRoom> ().direction == 2 && NearRoom.GetComponent<HouseRoom> ().direction == 3) ||
+				    (CurrentRoom.GetComponent<HouseRoom> ().direction == 3 && NearRoom.GetComponent<HouseRoom> ().direction == 2)) {
+					if (this.tag == "DoorL" && NearRoom.GetComponent<HouseRoom> ().HasLeftDoor == 1) {
+						return "DoorL";
+					}
+					if (this.tag == "DoorR" && NearRoom.GetComponent<HouseRoom> ().HasRightDoor == 1) {
+						return "DoorR";
+					}
+				} else{
+					if (NearRoom.GetComponent<HouseRoom> ().HasTopDoor == 1) {
+						return "DoorU";
+					}
 				}
 			}
 		} else {
@@ -111,8 +128,11 @@ public class HouseRoomDoor : MonoBehaviour {
 
 			}
 		}
+
+
 		return null;
 	}
+
 
 	protected void OnTriggerStay2D( Collider2D other){
 		if (other.tag == "Player") {
@@ -152,33 +172,159 @@ public class HouseRoomDoor : MonoBehaviour {
 		if (newRoomDoor == null) {
 			if(Roomtype == 0){
 				if (this.tag == "DoorL") {
-					GameManager.instance.myplayer.transform.position = new Vector3 (12f, -2.3f);
+					GameManager.instance.myplayer.transform.position = new Vector3 (1.5f, -1.1f);
 				} else {
-					GameManager.instance.myplayer.transform.position = new Vector3 (-16f, -3f);
+					GameManager.instance.myplayer.transform.position = new Vector3 (-18f, -0.7f);
+				}
+			}
+
+			if (Roomtype == 1) {
+				if (this.tag == "DoorL") {
+					GameManager.instance.myplayer.transform.position = new Vector3 (14.5f, -0.5f);
+				} else {
+					GameManager.instance.myplayer.transform.position = new Vector3 (-18f, -0.7f);
 				}
 			}
 
 		}else if (newRoomDoor == "DoorL") {
 			if(Roomtype == 0){
-				GameManager.instance.myplayer.transform.position = new Vector3 (-17f, -3f);
+				GameManager.instance.myplayer.transform.position = new Vector3 (-18f, -0.7f);
 			}
+
+			if (Roomtype == 1) {
+				GameManager.instance.myplayer.transform.position = new Vector3 (-18f, -0.7f);
+			}
+
 		}else if( newRoomDoor == "DoorR"){
 			if(Roomtype == 0){
-				GameManager.instance.myplayer.transform.position = new Vector3 (12f, -2.3f);
+				GameManager.instance.myplayer.transform.position = new Vector3 (1.5f, -1.1f);
 			}	
+			if (Roomtype == 1) {
+				GameManager.instance.myplayer.transform.position = new Vector3 (14.5f, -0.5f);
+			}
 		}else{
 			if(Roomtype == 0){
-				GameManager.instance.myplayer.transform.position = new Vector3 (-8f, -1f);
-			}	
+				GameManager.instance.myplayer.transform.position = new Vector3 (-9f, -0.1f);
+			}
+
+			if(Roomtype == 1){
+				GameManager.instance.myplayer.transform.position = new Vector3 (-9f, -0.1f);
+			}
+
+
 		}
 
 	}
 
+	//TODO 不使用递归
+	public GameObject selectNewRoom(){
+		GameObject newRoom = HouseroomManager.instance.RoomRandomList [Random.Range (0, HouseroomManager.instance.RoomRandomList.Length)];
 
+		if (HouseroomManager.instance.currentKeyRoomIndex < HouseroomManager.instance.keyRoomList.Length) {
+			if (HouseroomManager.instance.currentRoomIndex < (HouseroomManager.instance.currentKeyRoomIndex + 1) * 5) {
+				
+				if (HouseroomManager.instance.isOneDoorLeft()) {
+					if(newRoom.GetComponent<HouseRoom>().repeateable == false && newRoom.GetComponent<HouseRoom>().alreadyExist == true){
+						return selectNewRoom();
+					}
+
+					if (newRoom.GetComponent<HouseRoom> ().doorNumber == 1 ||newRoom.GetComponent<HouseRoom> ().doorNumber ==2) {
+						return (HouseroomManager.instance.RoomRandomList [0]);
+					}
+					return newRoom;
+				}
+
+				if (Random.Range (0, 9) < 2) {
+					HouseroomManager.instance.currentKeyRoomIndex += 1;
+
+					if (HouseroomManager.instance.currentKeyRoomIndex == 1) {
+						HouseroomManager.instance.GhostBegin = true;
+						Instantiate (HouseroomManager.instance.GhostObj, GameObject.Find ("Ghosts").transform);
+
+						showTutorial3 = true;
+
+					}
+
+					return (HouseroomManager.instance.keyRoomList [HouseroomManager.instance.currentKeyRoomIndex - 1]);
+				}
+			
+			} else if (HouseroomManager.instance.currentRoomIndex >= (HouseroomManager.instance.currentKeyRoomIndex + 1) * 5) {
+				
+				if (HouseroomManager.instance.isOneDoorLeft()) {
+					if(newRoom.GetComponent<HouseRoom>().repeateable == false && newRoom.GetComponent<HouseRoom>().alreadyExist == true){
+						return selectNewRoom();
+					}
+
+					if (newRoom.GetComponent<HouseRoom> ().doorNumber == 1 ||newRoom.GetComponent<HouseRoom> ().doorNumber ==2) {
+						return (HouseroomManager.instance.RoomRandomList [0]);
+					}
+
+					return newRoom;
+				}
+
+				HouseroomManager.instance.currentKeyRoomIndex += 1;
+
+				if (HouseroomManager.instance.currentKeyRoomIndex == 1) {
+					HouseroomManager.instance.GhostBegin = true;
+					Instantiate (HouseroomManager.instance.GhostObj, GameObject.Find ("Ghosts").transform);
+
+					showTutorial3 = true;
+
+
+				}
+
+				return (HouseroomManager.instance.keyRoomList [HouseroomManager.instance.currentKeyRoomIndex - 1]);
+			}
+		}
+
+
+
+		if(newRoom.GetComponent<HouseRoom>().repeateable == false && newRoom.GetComponent<HouseRoom>().alreadyExist == true){
+			return selectNewRoom();
+		}
+
+		if (newRoom.GetComponent<HouseRoom> ().doorNumber == 1 && HouseroomManager.instance.isOneDoorLeft()) {
+			return selectNewRoom();
+		}
+
+		return newRoom;
+	}
+
+	void changeingRoom(){
+		GameManager.instance.GetComponent<IndicatorText> ().blackCurtain.enabled = false;
+		GameManager.instance.myplayer.busy = false;
+		changingRoom = false;
+
+		for (int i2 = 0; i2 < HouseroomManager.instance.Ghosts.Count; i2++) {
+			if (HouseroomManager.instance.Ghosts [i2] != null) {
+				if (HouseroomManager.instance.Ghosts [i2].GhostPosition [0] == GameObject.FindGameObjectWithTag ("CurrentRoom").GetComponent<HouseRoom> ().RoomPosition [0] &&
+					HouseroomManager.instance.Ghosts [i2].GhostPosition [1] == GameObject.FindGameObjectWithTag ("CurrentRoom").GetComponent<HouseRoom> ().RoomPosition [1]) {
+					HouseroomManager.instance.attackPlayer = true;
+					DestroyImmediate (HouseroomManager.instance.Ghosts [i2].gameObject);
+
+				} 
+			}
+		}
+
+		GameManager.instance.GetComponent<IndicatorText> ().updateGhostsInMap ();
+
+		if (showTutorial3) {
+			HouseroomManager.instance.room1index = HouseroomManager.instance.currentRoomIndex+1;
+			GameManager.instance.GetComponent<IndicatorText> ().showKeyInformation ("tutorial3", "tutorial3_end");
+			showTutorial3 = false;
+		}
+
+	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!changingRoom) {
+
+		if (HouseroomManager.instance.checkNearRoom (this.tag) != null && !isNearRoom) {
+			isNearRoom = true;
+		}
+
+
+		if (!changingRoom && !GameManager.instance.myplayer.busy) {
 
 			int NewRoomrelatedPosition = new int ();
 
@@ -203,6 +349,8 @@ public class HouseRoomDoor : MonoBehaviour {
 			
 			if (Input.GetKeyDown ("f") && nearDoor && NearRoom == null && !locked) {
 
+				isNearRoom = true;
+
 				changingRoom = true;
 				CurrentRoom = GameObject.FindGameObjectWithTag ("CurrentRoom");
 				nearDoor = false;
@@ -211,9 +359,9 @@ public class HouseRoomDoor : MonoBehaviour {
 				GameManager.instance.myplayer.busy = true;
 
 				GameManager.instance.GetComponent<IndicatorText> ().hideIndicator ();
-				//TODO
 
-				GameObject newRoom = HouseroomManager.instance.RoomRandomList [Random.Range (0, HouseroomManager.instance.RoomRandomList.Length)];
+
+				GameObject newRoom = selectNewRoom();
 
 
 				if (this.tag == "DoorR" || this.tag == "DoorL") {
@@ -232,19 +380,25 @@ public class HouseRoomDoor : MonoBehaviour {
 
 				///test
 				initPlayerPosition(null,newRoom.GetComponent<HouseRoom> ().Roomtype);
-				
+
+				HouseroomManager.instance.allGhostsMove ();
 				HouseroomManager.instance.AddNewRoom (newRoom.GetComponent<HouseRoom> (), NewRoomrelatedPosition);
 
-				GameManager.instance.myplayer.busy = false;
+				SoundManager.instance.door_creak_closing.Play ();
+				GameManager.instance.GetComponent<IndicatorText> ().blackCurtain.enabled = true;
+
+				Invoke ("changeingRoom", 2f);
 
 
-				changingRoom = false;
-			} else if (Input.GetKeyDown ("f") && nearDoor && isConnectedtoRoom &&!locked) {
+			} else if (!changingRoom && Input.GetKeyDown ("f") && nearDoor && isConnectedtoRoom &&!locked) {
 				
 				changingRoom = true;
 				CurrentRoom = GameObject.FindGameObjectWithTag ("CurrentRoom");
 				nearDoor = false;
+				isNearRoom = true;
 
+				GameManager.instance.myplayer.playerRigidbody.velocity = new Vector2 (0f, 0f);
+				GameManager.instance.myplayer.busy = true;
 
 				///test
 				initPlayerPosition (ConnectedDoorTag,NearRoom.GetComponent<HouseRoom>().Roomtype);
@@ -257,7 +411,11 @@ public class HouseRoomDoor : MonoBehaviour {
 
 				GameManager.instance.GetComponent<IndicatorText> ().connectedToRoomInMap (NearRoom.GetComponent<HouseRoom> ().roomIndex, CurrentRoom.GetComponent<HouseRoom> ().roomIndex, NewRoomrelatedPosition,NearRoom.GetComponent<HouseRoom>());
 
-				changingRoom = false;
+				SoundManager.instance.door_creak_closing.Play ();
+				GameManager.instance.GetComponent<IndicatorText> ().blackCurtain.enabled = true;
+
+				HouseroomManager.instance.allGhostsMove ();
+				Invoke ("changeingRoom", 2f);
 			}
 		}
 	  

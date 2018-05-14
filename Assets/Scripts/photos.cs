@@ -13,7 +13,7 @@ public class photos : MonoBehaviour {
 	protected void OnTriggerStay2D( Collider2D other){
 		if (other.tag == "Player") {
 			nearPhoto = true;
-			GameManager.instance.GetComponent<IndicatorText> ().showIndicator ("Press F to view the photo");
+			GameManager.instance.GetComponent<IndicatorText> ().showIndicator ("Press F to view the document");
 		}
 	}
 

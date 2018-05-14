@@ -29,15 +29,16 @@ public class GameManager : MonoBehaviour {
 
 	void Start(){
 		init ();
-		//startStoryScript.showBeginingStory ();
+		startStoryScript.showBeginingStory ();
 		//OutSideStart();
-		showHouseRoom();
+		//showHouseRoom();
 
 	}
 
 	// Use this for initialization
 
 	void init(){
+		
 		if (instance == null) {
 			instance = this;
 		} else if (instance != this) {
@@ -48,10 +49,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void OutSideStart(){
+		
 		outsideInstance = Instantiate (outside) as GameObject;
 		Instantiate (player);
 		inOutside = true;
+		this.GetComponent<IndicatorText>().showKeyInformation ("tutorial1", "tutorial1_end");
+
 		this.myplayer.busy = true;
+		this.transform.localScale = new Vector3 (0.9f, 0.9f);
 	}
 
 	public void showLoopRoom(){
@@ -67,8 +72,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void LoopRoomStart(){
+		myplayer.transform.localScale = new Vector3 (1.2f, 1.2f);
 		Looproom1Instance = Instantiate (Looproom1) as GameObject;
-		myplayer.transform.position = new Vector3 (-16f, -3f);
+		myplayer.transform.position = new Vector3 (-18f, -1.5f);
 		inLoopRoom = true;
 		myplayer.gameObject.GetComponent<SpriteRenderer> ().enabled = true;
 		myplayer.busy = false;
@@ -91,10 +97,14 @@ public class GameManager : MonoBehaviour {
 
 	public void showHouseRoom(){
 		//测试代码
-		Instantiate (player);
-		this.myplayer.busy = true;
-		GameManager.instance.myplayer.transform.position = new Vector3 (-19f, -2f);
+		//Instantiate (player);
+		//this.myplayer.busy = true;
+		//myplayer.transform.localScale = new Vector3 (1.2f, 1.2f);
+		//GameManager.instance.myplayer.transform.position = new Vector3 (-19f, -2f);
 		//
+
+
+		inLoopRoom = false;
 
 		GetComponent<IndicatorText> ().initRoomInMap ();
 
@@ -102,6 +112,7 @@ public class GameManager : MonoBehaviour {
 
 		HouseroomManager.instance.HouseRoomStart ();
 		myplayer.gameObject.GetComponent<SpriteRenderer> ().enabled = true;
+		this.GetComponent<IndicatorText>().showKeyInformation ("tutorial2", "tutorial2_end");
 		myplayer.busy = false;
 	}
 

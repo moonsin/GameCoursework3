@@ -1,0 +1,46 @@
+[title=key1]
+Dear Principal:\nAccording to the common inspection framework, we are honored to inform you that Southampton High School has received a good credit rating.\n The teachers and students of the school all agree that they have a good learning environment and a great campus atmosphere.\nSincere congratulations to you!\nThe Office for Standards in Education
+[title=key1_end]
+
+[title=key2]
+The first part of diary.
+9.23\nIn the first semester of high school, I learned very hard. At the end of this period, I was ranked first in the class. The teacher praised me in class that everyone should learn from me :)
+10.12\nAlthough the teacher said that I was a good student, I heard that some of my classmates said I am a submissive puppy at the volume which the teacher cannot hear.
+11.2\nToday the teacher asked us to discuss in groups, but no one in the class wanted to be with me. I do not know what I did wrong. I only know that I don't want to go to school :(
+11.14\nToday, I found my notes in the toilet, and someone poured juice into my locker. I told the teacher about this, but the teacher said that I was causing confusion of the school.
+12.10\nI didn't go to school today. when I thought about school,  it would cause me a stomachache. I felt disappointed and even vomited this morning. Should I visit a doctor?
+[title=key2_end]
+
+[title=key3]
+Mwdical Document\nPatient's Name: Miss Xiao Nv Hai\nDate of Birth: March, 15, 1953\nProcedure: Depression treatment\nDate of procedure: Januara 22, 1968\nShe has experienced temporary hallucinations since January. Sometimes she feels unrealistic. The reason may be due to fear or bad experience in real life. Her mood is unstable and she does not want to go to school. 
+Difficult to get along, occasionally self-harm behavior.\nDepartment: Department of Paychology\nHospital nam: Southampton General Hospital\nAddress: Tremona Rd, Southampton SO16 6YD, United Kingdom\nPhone: +023 -8077-7222\nFax: +023 -8077-7111\nDoctor's Name: Shiro Saito.M.D.
+[title=key3_end]
+
+[title=key4]
+The last part of diary.
+4.25\nI might be very sick. I can only feel pain now. I hate them, why they make me like this? I am so painful.
+5.1\nI hate them! I cant stand this pain any more!!
+5.3\nI I will end this pain. To finish this, I have to buy something. Some gasoline.
+5.14\nToday is the day. I locked the emergency exit and hid the key in the locker in this room. When I burn the school, no one could run out. Let's die together!
+And you. You never run out of the house.
+[title=key4_end]
+
+[title=hpend]
+You suddenly wake up and find that you are still in the laboratory, it seems just a dream. You look at the code that hasn't finished yet and you are ready to stay up late. \nHowever, when you reach out and you're ready to write the code, you find that the hand holds a key tightly.
+[title=hpend_end]
+
+[title=bdend]
+15th May 2018 Breaking News\nThe University of Southampton student disappearance occurred, according to the current understanding of the student's last place is the school laboratory, and his belongings are left on the scene, the current police suspect that the student is too stressed so may travel outbound to relax.
+[title=bdend_end]
+
+[title=tutorial1]
+In this game, click the left mouse button or the space key to turn pages of a document or the dialogue.\nAnd again, please make sure you can hear the sound of rain clearly.
+[title=tutorial1_end]
+
+[title=tutorial2]
+tutorial2\nNow, you can use a map to see the house. Use M key to open the map and press it again to close the map.
+[title=tutorial2_end]
+
+[title=tutorial3]
+tutorial3\nFrom now on, each time a player explores a new room, it is possible to appear a ghost (accompanied by the sound of a new ghost) in a random (ghostless) room. \nPlayers can see all the ghosts in the house on the map. When the player enters another room, each ghost will randomly move into others room. If the player enters the room where the ghost is located, then the player will be scared by the ghost and decrease the SAN value, after that, the ghost will disappear. If the value of the SAN drops to zero, then the player will die and the game will end.
+[title=tutorial3_end]

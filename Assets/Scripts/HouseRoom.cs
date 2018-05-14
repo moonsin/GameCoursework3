@@ -12,10 +12,13 @@ public class HouseRoom : MonoBehaviour {
 	public int HasTopDoor;
 	public int[] RoomPosition = new int[2];
 	public int Roomtype; // 0小 1大
+	public bool repeateable = true;
+	public bool alreadyExist = false;
 
 	// Use this for initialization
 	void Start () {
-		
+		alreadyExist = false;
+		HouseroomManager.instance.addRoomTolist (this);
 	}
 	
 	// Update is called once per frame
