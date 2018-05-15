@@ -42,5 +42,14 @@ tutorial2\nNow, you can use a map to see the house. Use M key to open the map an
 [title=tutorial2_end]
 
 [title=tutorial3]
-tutorial3\nFrom now on, each time a player explores a new room, it is possible to appear a ghost (accompanied by the sound of a new ghost) in a random (ghostless) room. \nPlayers can see all the ghosts in the house on the map. When the player enters another room, each ghost will randomly move into others room. If the player enters the room where the ghost is located, then the player will be scared by the ghost and decrease the SAN value, after that, the ghost will disappear. If the value of the SAN drops to zero, then the player will die and the game will end.
+tutorial3\nFrom now on, each time a player explores a new room, it is possible to appear a ghost (accompanied by the sound of cry) in a random (ghostless) room. \nPlayers can see all the ghosts in the house on the map. When the player enters another room, each ghost will randomly move into others room. If the ghost's new location meets the player, then the player will be scared by the ghost and decrease the SAN value, after that, the ghost will disappear. If the value of the SAN drops to zero, then the player will die and the game will end.
+By the way, You can use the R key to rest one round in a room. This means that you do not move anywhere and each ghost still has to move once. This is very helpful when sometimes you inevitably encounter ghosts on a move.
 [title=tutorial3_end]
+
+[title=tutorial4]
+Now you have found the key of Emergency exit. Ghosts in the house are increasing immediately Obviously, they do not want you to leave. Find emergency exit and leave, good luck.
+[title=tutorial4_end]
+[title=nodoor]
+There is no door lead to a new room now\nif you dont have the key or find the emergency exit,then the game is over for you.\n This is mainly caused by the stratage to explore this house.
+[title=nodoor_end]
+

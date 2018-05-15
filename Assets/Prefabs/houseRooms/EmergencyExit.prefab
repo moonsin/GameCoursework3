@@ -649,13 +649,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57a8bc6ee67c46c8b7dc2098b9c89e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomIndex: 17
-  direction: 3
+  roomIndex: 5
+  direction: 1
   doorNumber: 1
   HasLeftDoor: 1
   HasRightDoor: 0
   HasTopDoor: 0
-  RoomPosition: 120000000e000000
+  RoomPosition: 6100000064000000
   Roomtype: 0
   repeateable: 0
   alreadyExist: 1
@@ -677,6 +677,7 @@ MonoBehaviour:
   changingRoom: 0
   lockSoundShowed: 0
   isNearRoom: 0
+  showTutorial3: 0
 --- !u!114 &114558596966689944
 MonoBehaviour:
   m_ObjectHideFlags: 1

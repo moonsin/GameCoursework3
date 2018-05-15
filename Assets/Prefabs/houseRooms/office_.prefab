@@ -2261,13 +2261,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57a8bc6ee67c46c8b7dc2098b9c89e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomIndex: 8
-  direction: 0
+  roomIndex: 7
+  direction: 2
   doorNumber: 1
   HasLeftDoor: 1
   HasRightDoor: 0
   HasTopDoor: 0
-  RoomPosition: 1400000012000000
+  RoomPosition: 6300000066000000
   Roomtype: 0
   repeateable: 0
   alreadyExist: 1
@@ -2282,6 +2282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47080f4ad405d1a45963cd0d2a8ca65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talked: 0
 --- !u!212 &212063036334706626
 SpriteRenderer:
   m_ObjectHideFlags: 1

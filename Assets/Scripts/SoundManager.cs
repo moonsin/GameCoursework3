@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour {
 	public AudioSource nextPage;
 	public AudioSource nico;
 	public AudioSource blood;
+	public AudioSource cry;
+	public AudioSource rain1;
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +38,9 @@ public class SoundManager : MonoBehaviour {
 		nextPage = GameObject.Find ("nextPage").GetComponent<AudioSource> ();
 		nico = GameObject.Find ("nico").GetComponent<AudioSource> ();
 		blood = GameObject.Find ("blood").GetComponent<AudioSource> ();
+		cry = GameObject.Find ("cry").GetComponent<AudioSource> ();
+		rain1 = GameObject.Find ("rain1").GetComponent<AudioSource> ();
+
 	}
 	
 	// Update is called once per frame

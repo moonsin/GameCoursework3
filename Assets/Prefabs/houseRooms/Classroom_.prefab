@@ -2330,12 +2330,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomIndex: 11
-  direction: 0
+  direction: 1
   doorNumber: 1
   HasLeftDoor: 1
   HasRightDoor: 0
   HasTopDoor: 0
-  RoomPosition: 1400000011000000
+  RoomPosition: 5f00000065000000
   Roomtype: 1
   repeateable: 0
   alreadyExist: 1
@@ -2369,6 +2369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c46eb44bf44c141bc6bc148d51b9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talked: 0
 --- !u!212 &212053337659101248
 SpriteRenderer:
   m_ObjectHideFlags: 1

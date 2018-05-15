@@ -10,6 +10,11 @@ public class LooproomDoor3 : commonDoor {
 	void Start () {
 		locked = true;
 	}
+
+	void showHouseroom(){
+		//GameManager.instance.GetComponent<IndicatorText> ().blackCurtain.enabled = false;
+		GameManager.instance.showHouseRoom ();
+	}
 		
 	
 	// Update is called once per frame
@@ -24,7 +29,10 @@ public class LooproomDoor3 : commonDoor {
 
 			GameManager.instance.myplayer.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			GameManager.instance.myplayer.transform.position = new Vector3 (-18f, -0.7f);
+
+			//GameManager.instance.GetComponent<IndicatorText> ().blackCurtain.enabled = true;
 			SoundManager.instance.door_creak_closing.Play ();
+
 			GameManager.instance.showHouseRoom ();
 
 		}

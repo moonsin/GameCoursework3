@@ -110,6 +110,8 @@ public class GameManager : MonoBehaviour {
 
 		inHouseRoom = true;
 
+		SoundManager.instance.rain1.Play ();
+
 		HouseroomManager.instance.HouseRoomStart ();
 		myplayer.gameObject.GetComponent<SpriteRenderer> ().enabled = true;
 		this.GetComponent<IndicatorText>().showKeyInformation ("tutorial2", "tutorial2_end");

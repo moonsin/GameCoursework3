@@ -1574,14 +1574,14 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1303142183756524}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cdd5c0c985e6e407aadc79536a820b25, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2f84d6a44f6491442ad8376ba9292d06, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1676,6 +1676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1aae4f44d8db41a08b7d6ac6fecb561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talked: 0
 --- !u!114 &114533138904855190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1699,13 +1700,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57a8bc6ee67c46c8b7dc2098b9c89e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomIndex: 13
-  direction: 3
+  roomIndex: 19
+  direction: 0
   doorNumber: 1
   HasLeftDoor: 1
   HasRightDoor: 0
   HasTopDoor: 0
-  RoomPosition: 120000000f000000
+  RoomPosition: 6600000063000000
   Roomtype: 0
   repeateable: 0
   alreadyExist: 1

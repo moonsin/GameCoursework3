@@ -42,7 +42,12 @@ public class IndicatorText : MonoBehaviour {
 	public Image blackCurtain;
 
 	public GameObject MapPlayer;
+	public Text GhostNumberValue;
+	public Text roomNumberValue;
 	public Text SanValue;
+	public Text useRtoRest;
+	public int GhostNumber = 0;
+	public int RoomNumber = 1;
 
 
 	// Use this for initialization
@@ -85,9 +90,15 @@ public class IndicatorText : MonoBehaviour {
 		Ghosthappen6.enabled = false;
 
 		SanValue = GameObject.Find ("SanValue").GetComponent<Text> ();
+		roomNumberValue = GameObject.Find ("roomNumberValue").GetComponent<Text> ();
+		GhostNumberValue = GameObject.Find ("GhostNumberValue").GetComponent<Text> ();
+		useRtoRest = GameObject.Find ("useRtoRest").GetComponent<Text> ();
+		useRtoRest.enabled = false;
 
 		blackCurtain = GameObject.Find ("blackCurtain").GetComponent<Image> ();
 		blackCurtain.enabled = false;
+
+
 	}
 
 	public void updateGhostsInMap(){
@@ -397,13 +408,14 @@ public class IndicatorText : MonoBehaviour {
 		Ghosthappen1.enabled = true;
 		GameObject.Find ("unstable1").GetComponent<AudioSource> ().Play();
 		Ghosthappen6.color = new Color (255, 255, 255,  255);
+		Ghosthappen6.GetComponent<Animator> ().ResetTrigger ("hide");
 		Ghosthappen6.GetComponent<Animator> ().SetTrigger ("finishi");
-		Invoke ("showGhostHappen2", 1.5f);
+		Invoke ("showGhostHappen3", 1.5f);
 	}
 
 	void showGhostHappen2(){
 		SoundManager.instance.nextPage.Play ();
-		SoundManager.instance.nico.Play ();
+	
 		Ghosthappen2.enabled = true;
 
 		Invoke ("showGhostHappen3", 1.5f);
@@ -411,6 +423,7 @@ public class IndicatorText : MonoBehaviour {
 
 	void showGhostHappen3(){
 		SoundManager.instance.nextPage.Play ();
+		SoundManager.instance.nico.Play ();
 		Ghosthappen3.enabled = true;
 		Invoke ("showGhostHappen4", 1.5f);
 	}
@@ -422,6 +435,7 @@ public class IndicatorText : MonoBehaviour {
 		Invoke ("showGhostHappen5", 2f);
 	}
 	void showGhostHappen5(){
+		Ghosthappen6.GetComponent<Animator> ().ResetTrigger ("finishi");
 		SoundManager.instance.nextPage.Play ();
 		Ghosthappen5.enabled = true;
 		Ghosthappen6.enabled = true;
@@ -436,6 +450,11 @@ public class IndicatorText : MonoBehaviour {
 		Ghosthappen5.enabled = false;
 		Ghosthappen6.enabled = false;
 		GameManager.instance.myplayer.busy = false;
+
+		if (GameManager.instance.myplayer.SAN <= 0) {
+			GameManager.instance.myplayer.busy = true;
+			showBdText ();
+		}
 	}
 
 	public void showHpText(){
@@ -456,9 +475,27 @@ public class IndicatorText : MonoBehaviour {
 		if (HouseroomManager.instance.attackPlayer == true) {
 			HouseroomManager.instance.attackPlayer = false;
 			showGhostHappen ();
+
+			GhostNumber -= 1;
+			GhostNumberValue.text = "Ghost Number: " + GhostNumber.ToString ();
+
+
 			GameManager.instance.myplayer.SAN -= 20;
 			SanValue.text = "SAN : " + GameManager.instance.myplayer.SAN.ToString ();
 		}
+
+		if (HouseroomManager.instance.addGhost) {
+			HouseroomManager.instance.addGhost = false;
+			GhostNumber += 1;
+			GhostNumberValue.text = "Ghost Number: " + GhostNumber.ToString ();
+		}
+
+		if (HouseroomManager.instance.addRoom) {
+			HouseroomManager.instance.addRoom = false;
+			RoomNumber += 1;
+			roomNumberValue.text = "Room Number: " + RoomNumber.ToString ();
+		}
+			
 		
 		if (FollowTalkShowed) {
 			Vector3 newPos = Camera.main.WorldToScreenPoint (GameManager.instance.myplayer.transform.position);

@@ -48,8 +48,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 57c9940e84c094555aa88ae08738c4ed, type: 3}
-    m_FontSize: 15
+    m_Font: {fileID: 12800000, guid: 9f71d0662bc2c456c81251cd66e50747, type: 3}
+    m_FontSize: 19
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -60,7 +60,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3doorCorridor
+  m_Text: Toliet
 --- !u!222 &222229469382788132
 CanvasRenderer:
   m_ObjectHideFlags: 1

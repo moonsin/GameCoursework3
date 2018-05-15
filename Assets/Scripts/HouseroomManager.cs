@@ -7,7 +7,7 @@ public class HouseroomManager : MonoBehaviour {
 	public static HouseroomManager instance = null;
 
 	public GameObject[,] RoomInstancesMap;
-	public int MaxRoomNumber = 50;
+	public int MaxRoomNumber = 100;
 	public int currentRoomIndex = 0;
 	public int currentKeyRoomIndex = 0;
 	public GameObject CurrentRoom;
@@ -22,8 +22,10 @@ public class HouseroomManager : MonoBehaviour {
 	public GameObject GhostObj;
 	public bool playerAttaced = false;
 	public bool attackPlayer = false;
-	public int room1index = 0;
+	public bool notInFirstKeyroom = false;
 
+	public bool addGhost = false;
+	public bool addRoom = false;
 
 	void Awake(){
 
@@ -76,6 +78,10 @@ public class HouseroomManager : MonoBehaviour {
 			ghost.GhostPosition[0] = HouseRooms [index].RoomPosition[0];
 			ghost.GhostPosition[1] = HouseRooms [index].RoomPosition[1];
 			Ghosts.Add(ghost);
+
+			SoundManager.instance.cry.Play ();
+			addGhost = true;
+
 			GameManager.instance.GetComponent<IndicatorText> ().updateGhostsInMap ();
 		}
 
@@ -198,9 +204,9 @@ public class HouseroomManager : MonoBehaviour {
 
 	void initFirstRoom(){
 		GameObject FirstRoomInstance =  Instantiate (FirstRoom) as GameObject;
-		RoomInstancesMap [19, 19] = FirstRoomInstance;
-		FirstRoomInstance.GetComponent<HouseRoom> ().RoomPosition [0] = 19;
-		FirstRoomInstance.GetComponent<HouseRoom> ().RoomPosition [1] = 19;
+		RoomInstancesMap [MaxRoomNumber-1, MaxRoomNumber-1] = FirstRoomInstance;
+		FirstRoomInstance.GetComponent<HouseRoom> ().RoomPosition [0] = MaxRoomNumber-1;
+		FirstRoomInstance.GetComponent<HouseRoom> ().RoomPosition [1] = MaxRoomNumber-1;
 	}
 
 	void initRoomMapMatrix(int RoomNumber){
@@ -264,11 +270,33 @@ public class HouseroomManager : MonoBehaviour {
 
 		newroom.alreadyExist = true;
 
-		if (GhostBegin == true && room1index!= currentRoomIndex) {
-			int randomNumber = Random.Range (0, 3);
-			if (randomNumber >= 2) {
-				Instantiate (GhostObj, GameObject.Find ("Ghosts").transform);
+		addRoom = true;
+
+		if (GhostBegin == true ) {
+			if (notInFirstKeyroom == true) {
+				
+				int randomNumber = Random.Range (0, 4);
+
+
+				if (randomNumber >= 2) {
+					if (
+						((float)(GameManager.instance.GetComponent<IndicatorText> ().GhostNumber)
+						/ (float)(GameManager.instance.GetComponent<IndicatorText> ().RoomNumber))
+						< 0.66f) {
+						Instantiate (GhostObj, GameObject.Find ("Ghosts").transform);
+					}
+				} else {
+					if (
+						((float)(GameManager.instance.GetComponent<IndicatorText> ().GhostNumber)
+						/ (float)(GameManager.instance.GetComponent<IndicatorText> ().RoomNumber))
+						< 0.2f) {
+						Instantiate (GhostObj, GameObject.Find ("Ghosts").transform);
+					}
+				}
+
 			}
+				
+			notInFirstKeyroom = true;
 		}
 	
 	}
@@ -284,8 +312,10 @@ public class HouseroomManager : MonoBehaviour {
 				doorNumber +=1;
 			}
 		}
+
 		return true;
 	}
+
 
 	//RoomDirection : 0:水平向右 1:水平向左 2:垂直向上 3 垂直向下
 	public GameObject checkNearRoom(string doorType){

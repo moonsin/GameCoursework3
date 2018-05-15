@@ -29,11 +29,22 @@ public class key : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetKeyDown ("f") && nearPhoto) {
+			
 			GameManager.instance.myplayer.playerRigidbody.velocity = new Vector2 (0f, 0f);
 			GameManager.instance.myplayer.busy = true;
+
+			GameManager.instance.GetComponent<IndicatorText> ().showKeyInformation ("tutorial4", "tutorial4_end");
 			GameManager.instance.GetComponent<IndicatorText> ().showIndicatorImage("key");
+
+
+			Instantiate (HouseroomManager.instance.GhostObj, GameObject.Find ("Ghosts").transform);
+	
+
 			alreadyGet = true;
+			nearPhoto = false;
+
 			GameManager.instance.myplayer.hasKey = true;
+			GameManager.instance.GetComponent<IndicatorText> ().hideIndicator ();
 		}
 
 		if (Input.GetKeyDown ("q")) {

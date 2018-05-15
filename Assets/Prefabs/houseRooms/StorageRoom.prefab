@@ -1824,6 +1824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f3fa93712300a4e86f8808c2dd81fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talked: 0
 --- !u!114 &114193605385168630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1866,6 +1867,7 @@ MonoBehaviour:
   changingRoom: 0
   lockSoundShowed: 0
   isNearRoom: 0
+  showTutorial3: 0
 --- !u!114 &114878842877904284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1877,13 +1879,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57a8bc6ee67c46c8b7dc2098b9c89e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomIndex: 24
-  direction: 2
+  roomIndex: 28
+  direction: 1
   doorNumber: 1
   HasLeftDoor: 1
   HasRightDoor: 0
   HasTopDoor: 0
-  RoomPosition: 1700000010000000
+  RoomPosition: 6300000067000000
   Roomtype: 0
   repeateable: 0
   alreadyExist: 1

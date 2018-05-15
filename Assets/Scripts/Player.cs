@@ -81,10 +81,20 @@ public class Player : MonoBehaviour {
 			MovementX ();
 			MovementY ();
 		}
+			
+		if (Input.GetKeyDown ("r")) {
+				HouseroomManager.instance.allGhostsMove ();
 
-		if (SAN <= 0) {
-			busy = true;
-			GameManager.instance.GetComponent<IndicatorText> ().showBdText ();
+				for (int i2 = 0; i2 < HouseroomManager.instance.Ghosts.Count; i2++) {
+					if (HouseroomManager.instance.Ghosts [i2] != null) {
+						if (HouseroomManager.instance.Ghosts [i2].GhostPosition [0] == GameObject.FindGameObjectWithTag ("CurrentRoom").GetComponent<HouseRoom> ().RoomPosition [0] &&
+							HouseroomManager.instance.Ghosts [i2].GhostPosition [1] == GameObject.FindGameObjectWithTag ("CurrentRoom").GetComponent<HouseRoom> ().RoomPosition [1]) {
+							HouseroomManager.instance.attackPlayer = true;
+							DestroyImmediate (HouseroomManager.instance.Ghosts [i2].gameObject);
+							GameManager.instance.GetComponent<IndicatorText> ().updateGhostsInMap ();
+						} 
+					}
+				}
 		}
 
 		if ((Input.GetAxis (HORIZONTAL) != 0 || Input.GetAxis (VERTICAL) != 0)) {

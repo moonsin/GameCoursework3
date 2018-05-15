@@ -4,7 +4,7 @@ I should try to look around and find a phone.
 [title=looproom1_end]
 
 [title=looproom2]
-WHAT ？？the room is same as the last room?
+WHAT?? the room is same as the last room?
 [title=looproom2_end]
 
 [title=key1found]
@@ -17,7 +17,7 @@ That's too weird.
 
 [title=key2found]
 Oh, that's a diary of a poor girl.
-Where is she? Is she fine now?
+Is she fine now?
 [title=key2found_end]
 
 [title=key3found]

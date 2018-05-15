@@ -309,9 +309,21 @@ public class HouseRoomDoor : MonoBehaviour {
 		GameManager.instance.GetComponent<IndicatorText> ().updateGhostsInMap ();
 
 		if (showTutorial3) {
-			HouseroomManager.instance.room1index = HouseroomManager.instance.currentRoomIndex+1;
+			
 			GameManager.instance.GetComponent<IndicatorText> ().showKeyInformation ("tutorial3", "tutorial3_end");
 			showTutorial3 = false;
+			GameManager.instance.GetComponent<IndicatorText> ().useRtoRest.enabled = true;
+
+		}
+
+		int doorNumber = 0;
+		for (int i = 0; i < HouseroomManager.instance.Doors.Count; i++) {
+			if(HouseroomManager.instance.Doors[i].isNearRoom == false){
+				doorNumber +=1;
+			}
+		}
+		if (doorNumber == 0) {
+			GameManager.instance.GetComponent<IndicatorText> ().showKeyInformation ("nodoor", "nodoor_end");
 		}
 
 	}
