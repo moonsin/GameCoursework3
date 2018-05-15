@@ -14,12 +14,13 @@ public class HouseRoomDoor : MonoBehaviour {
 	public bool lockSoundShowed = false;
 	public bool isNearRoom = false;
 	public bool showTutorial3 = false;
+	public GameObject belongRoom;
 
 	// Use this for initialization
 	void Start () {
 		CurrentRoom = GameObject.FindGameObjectWithTag ("CurrentRoom");
 		HouseroomManager.instance.addDoorTolist (this);
-
+		belongRoom = GameObject.FindGameObjectWithTag ("CurrentRoom");
 	}
 
 	//return doorTag
@@ -48,7 +49,13 @@ public class HouseRoomDoor : MonoBehaviour {
 					}
 				} else{
 					if (NearRoom.GetComponent<HouseRoom> ().HasTopDoor == 1) {
+
+						//if (CurrentRoom.GetComponent<HouseRoom> ().direction == 1 && NearRoom.GetComponent<HouseRoom> ().direction == 2 && this.tag == "DoorR") {
+						//	return null;
+						//}
+
 						return "DoorU";
+					
 					}
 				}
 			}
@@ -331,9 +338,9 @@ public class HouseRoomDoor : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (HouseroomManager.instance.checkNearRoom (this.tag) != null && !isNearRoom) {
-			isNearRoom = true;
-		}
+		//if (HouseroomManager.instance.checkNearRoomWithRoom (this.tag,belongRoom) != null && !isNearRoom) {
+		//	isNearRoom = true;
+		//}
 
 
 		if (!changingRoom && !GameManager.instance.myplayer.busy) {

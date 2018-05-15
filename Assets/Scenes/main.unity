@@ -3723,7 +3723,7 @@ MonoBehaviour:
   FirstRoom: {fileID: 1113940760817506, guid: af8575ab687577a428ddc97483b0c693, type: 2}
   RoomRandomList:
   - {fileID: 1046898870263442, guid: cb462816716c19949afab60cb7d2cd65, type: 2}
-  - {fileID: 1877207984224502, guid: 4fb1dbf7fa1e84757bb1342ed3b652e3, type: 2}
+  - {fileID: 1706412207108230, guid: 4fb1dbf7fa1e84757bb1342ed3b652e3, type: 2}
   - {fileID: 1682124978168860, guid: 82359a10f861ada4a9adea2a36557ba2, type: 2}
   - {fileID: 1086820908668892, guid: 1e2f31bc18cf5bc42a2848d77ffe2984, type: 2}
   - {fileID: 1379564023040014, guid: b48404375ef384e248a4a4afe21400e7, type: 2}

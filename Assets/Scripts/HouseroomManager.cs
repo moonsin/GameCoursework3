@@ -348,6 +348,35 @@ public class HouseroomManager : MonoBehaviour {
 		return null;
 	}
 
+	public GameObject checkNearRoomWithRoom(string doorType,GameObject room){
+
+
+		if ((room.GetComponent<HouseRoom> ().direction == 0 && doorType == "DoorR") || 
+			(room.GetComponent<HouseRoom> ().direction == 1 && doorType == "DoorL")||
+			(room.GetComponent<HouseRoom> ().direction == 3 && doorType == "DoorU")
+		) {
+			return (RoomInstancesMap [room.GetComponent<HouseRoom> ().RoomPosition [0] + 1, room.GetComponent<HouseRoom> ().RoomPosition [1]]);
+		} else if
+			((room.GetComponent<HouseRoom> ().direction == 0 && doorType == "DoorL") || 
+				(room.GetComponent<HouseRoom> ().direction == 1 && doorType == "DoorR") ||
+				(room.GetComponent<HouseRoom> ().direction == 2 && doorType == "DoorU")
+			) {
+			return (RoomInstancesMap [room.GetComponent<HouseRoom> ().RoomPosition [0] - 1, room.GetComponent<HouseRoom> ().RoomPosition [1]]);
+		} else if ((room.GetComponent<HouseRoom> ().direction == 0 && doorType == "DoorU")||
+			(room.GetComponent<HouseRoom> ().direction == 2 && doorType == "DoorR") ||
+			(room.GetComponent<HouseRoom> ().direction == 3 && doorType == "DoorL")
+		) {
+			return (RoomInstancesMap [room.GetComponent<HouseRoom> ().RoomPosition [0], room.GetComponent<HouseRoom> ().RoomPosition [1]+1]);
+		}else if ((room.GetComponent<HouseRoom> ().direction == 1 && doorType == "DoorU")||
+			(room.GetComponent<HouseRoom> ().direction == 2 && doorType == "DoorL") ||
+			(room.GetComponent<HouseRoom> ().direction == 3 && doorType == "DoorR")
+		) {
+			return (RoomInstancesMap [room.GetComponent<HouseRoom> ().RoomPosition [0], room.GetComponent<HouseRoom> ().RoomPosition [1]-1]);
+		}
+
+		return null;
+	}
+
 	// Use this for initialization
 	void Start () {
 
@@ -355,6 +384,14 @@ public class HouseroomManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		//if (HouseroomManager.instance.checkNearRoomWithRoom (this.tag,belongRoom) != null && !isNearRoom) {
+		//	isNearRoom = true;
+		//}
+		for (int i = 0; i < Doors.Count; i++) {
+			if (!Doors [i].isNearRoom && checkNearRoomWithRoom (Doors [i].tag, Doors [i].belongRoom) != null) {
+				Doors [i].isNearRoom = true;
+			}
+		}
 		
 	}
 }

@@ -38,7 +38,7 @@ In this game, click the left mouse button or the space key to turn pages of a do
 [title=tutorial1_end]
 
 [title=tutorial2]
-tutorial2\nNow, you can use a map to see the house. Use M key to open the map and press it again to close the map.
+tutorial2\nNow, you can use a map to see the house. Use M key to open the map and press it again to close the map.\n Be careful, there are some hidden one-way secret doors in the house. Using it will make game easier.
 [title=tutorial2_end]
 
 [title=tutorial3]

@@ -2450,16 +2450,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57a8bc6ee67c46c8b7dc2098b9c89e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomIndex: 18
-  direction: 1
+  roomIndex: 4
+  direction: 2
   doorNumber: 1
   HasLeftDoor: 1
   HasRightDoor: 0
   HasTopDoor: 0
-  RoomPosition: 6000000068000000
+  RoomPosition: 6400000065000000
   Roomtype: 1
   repeateable: 0
-  alreadyExist: 0
+  alreadyExist: 1
 --- !u!114 &114650119450349882
 MonoBehaviour:
   m_ObjectHideFlags: 1
